@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @patient.name %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @patient.age %>
+</p>
+
+<p>
+  <strong>Doctor(s):</strong>
+  <% @patient.doctors.each do |doctor| %>
+  <li> <%= link_to "#{doctor.name}", doctor_path(doctor) %> </li>
+  <% end %>
+
+  <strong>Appointment Time(s):</strong>
+  <% @patient.appointments.each do |appointment| %>
+    <li> <%= appointment.appointment_datetime.strftime("%B %e, %Y at %H:%M") %> </li>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_patient_path(@patient) %> |
+<%= link_to 'Back', patients_path %>
